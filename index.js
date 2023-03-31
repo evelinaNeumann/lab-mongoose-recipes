@@ -17,7 +17,23 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    const newRecipe = {
+      title: 'Pasta with Tomato Sauce',
+      level: 'Easy Peasy',
+      ingredients: ['pasta', 'tomatoes', 'garlic', 'olive oil', 'salt', 'pepper'],
+      cuisine: 'Italian',
+      dishType: 'main_course',
+      duration: 30,
+      creator: 'John Doe'
+    };
+
+    // Add the new recipe document to the database
+    return Recipe.create(newRecipe);
   })
+  .then((recipe) => {
+    console.log(`Added recipe with title: "${recipe.title}"`);
+  })
+  
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
